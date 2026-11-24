@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CINEMAX - discover movies and build your personal watchlist.">
+  <title>CINEMAX | Movie Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CINEMAX home"><span class="brand-mark">C</span><span>CINE<span>MAX</span></span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <button class="nav-link active" id="homeNav">Explore</button>
+      <button class="nav-link" id="watchlistNav">My Watchlist <span id="watchlistCount" class="count">0</span></button>
+    </nav>
+    <div class="api-status connected" id="apiStatus"><span class="status-dot"></span><span>Free API · No key required</span></div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT MOVIE NIGHT STARTS HERE</p>
+        <h1>Find your next<br><span>favorite story.</span></h1>
+        <p class="hero-description">Explore movies, discover hidden gems, and keep your favorites in one place.</p>
+        <form id="searchForm" class="search-box">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Search movies, e.g. Interstellar..." autocomplete="off" aria-label="Search movies">
+          <button type="submit" class="search-button">Search <span>→</span></button>
+        </form>
+        <div class="quick-searches"><span>Try:</span><button class="quick-search" data-query="Interstellar">Interstellar</button><button class="quick-search" data-query="The Dark Knight">The Dark Knight</button><button class="quick-search" data-query="Inception">Inception</button></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="hero-poster poster-back"><span>THE</span><strong>UNKNOWN</strong><small>EVERY STORY BEGINS SOMEWHERE</small></div>
+        <div class="hero-poster poster-front"><div class="poster-glow"></div><span>DISCOVER</span><strong>YOUR<br>NEXT<br>FILM</strong><small>NOW SHOWING IN YOUR MIND</small></div>
+        <div class="floating-star star-one">✦</div><div class="floating-star star-two">✧</div>
+      </div>
+    </section>
+
+  
+    <section class="results-section">
+      <div class="section-heading">
+        <div><p class="eyebrow" id="sectionEyebrow">START EXPLORING</p><h2 id="sectionTitle">Discover movies</h2></div>
+        <div class="filters">
+          <label class="sr-only" for="yearFilter">Filter by year</label>
+          <select id="yearFilter"><option value="all">All years</option></select>
+          <label class="sr-only" for="genreFilter">Filter by genre</label>
+          <select id="genreFilter"><option value="all">All genres</option></select>
+        </div>
+      </div>
+      <div id="messageArea" class="message-area" role="status" aria-live="polite">
+        <div class="empty-icon">✦</div><h3>Your movie journey begins here</h3><p>Search for a movie to explore its information.</p>
+      </div>
+      <div id="movieGrid" class="movie-grid"></div>
+    </section>
+
+    <footer><a class="brand footer-brand" href="#"><span class="brand-mark">C</span><span>CINE<span>MAX</span></span></a><p>Made for movie lovers. Powered by a free public movie API.</p><p class="footer-note">Demo movie data provided by <a href="https://testingapis.com/docs/movies/get-all/" target="_blank" rel="noopener">Testing APIs</a>. Poster images are placeholders.</p></footer>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card"><button id="closeModal" class="close-modal" aria-label="Close details">×</button><div id="modalContent"></div></div>
+  </div>
+</body>
+</html>
